@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<form action="#" th:action="@{/routes/save}" th:object="${route}" method="post">
+    <p>Name:<input type="text" th:field="*{name}" /></p>
+    <p>Region:<input type="text" th:field="*{region}" /></p>
+    <p>Description:<textarea th:field="*{description}" placeholder="Enter description for your route"></textarea></p>
+    <p><input type="submit" value="Submit" /> </p>
+</form>
+</body>
+</html>
