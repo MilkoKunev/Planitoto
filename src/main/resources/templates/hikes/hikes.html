@@ -11,10 +11,8 @@
           rel="stylesheet" media="screen" />
      <link href="../../static/css/footer.css"
           th:href="@{../css/footer.css}" 
-          rel="stylesheet" media="screen" />                    
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
-    th:src="@{/webjars/jquery/3.2.1/jquery.min.js}">
-    </script> 
+          rel="stylesheet" media="screen" />                   
+
     <title>Planitoto</title>
 </head>
 <body>
@@ -63,18 +61,25 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>         
+
+
 <div class="container">
-    <div id="createRoute">
-        <a th:href="@{/routes/create}">Create hike</a>
+    <div id="createHike">
+        <a th:href="@{/hikes/create}">Create hike</a>
     </div>
-    <div th:each="route: ${routes}">
-        <h1 th:text="${route.name}"></h1>
-        <h3 th:text="${route.region}"></h3>
-        <p th:text="${route.description}"></p>
+    <div th:each="hike: ${hikes}">
+        <h1 th:text="${hike.name}"></h1>
+        <h3 th:text="${hike.region}"></h3>
+        <p th:text="${hike.route}"></p>
+        <p th:text="${hike.startDate}"></p>
+        <p th:text="${hike.endDate}"></p>                
+        <p th:text="${hike.cabin}"></p>
+        <p th:text="${hike.owner}"></p>
 
     </div>
 </div>
 </body>
+
   <footer class="footer">
       <div class="container">
         <p class="text-muted">Copyright © 2018. Owned and created by ТИМ-Б. </p>
