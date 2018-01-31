@@ -68,9 +68,23 @@
         <a th:href="@{/routes/create}">Create route</a>
     </div>
     <div th:each="route: ${routes}">
-        <h1 th:text="${route.name}"></h1>
-        <h3 th:text="${route.region}"></h3>
-        <p th:text="${route.description}"></p>
+          <div class="panel panel-default" id="Кобилска планина и в. Бели Камък" attr-region="Пирин">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-xs-3 list-item-image">
+                  <img class="img-responsive" src="img/marshruti/1.jpg"/>
+                </div>
+                <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-xs-9 list-item-desc">
+                  <h1 th:text="${route.name}">
+                      <a href="marshrut_detail.html" role="button" class="btn btn-default pull-right">Разгледай
+                      </a>
+                  </h1>
+                            <h3 th:text="${route.region}"></h3>
+                            <p th:text="${route.description}"></p>
+                </div>
+              </div>
+            </div>
+          </div>
 
     </div>
 </div>
