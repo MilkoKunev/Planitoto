@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+    <link href="../../../static/css/main.css"
+          th:href="@{../css/main.css}"
+          rel="stylesheet" media="screen" />
+    <link href="../../../static/css/footer.css"
+          th:href="@{../css/footer.css}"
+          rel="stylesheet" media="screen" />
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}">
+    </script>
+    <title>Planitoto</title>
+</head>
+<body>
+	<center>
+	<div>
+	    <a th:href="@{~/}">
+	        <img class="image-responsive" src="../images/logo.png" th:src="@{../images/logo.png}"/>
+	    </a>
+	</div>
+		<div class="alert alert-success">
+		    <a href="#" class="close" data-dismiss="alert">×</a>
+		    <strong>Поздравления!</strong> Успешно влязохте в системата.
+		</div> 	
+
+		<p>
+			Натиснете <a href="/">тук</a> за да продължите към Планитото.
+		</p>
+	</center>
+	</body>
+</html>

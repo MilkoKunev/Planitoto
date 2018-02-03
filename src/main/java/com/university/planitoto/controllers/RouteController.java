@@ -2,6 +2,8 @@ package com.university.planitoto.controllers;
 
 import com.university.planitoto.models.Route;
 import com.university.planitoto.repositories.RouteRepository;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ import java.util.List;
 @RequestMapping("/routes")
 public class RouteController {
 
-
+	private static final Logger LOGGER = Logger.getLogger(RouteController.class.getName());
     private final RouteRepository repository;
 
     @Autowired
@@ -45,16 +47,17 @@ public class RouteController {
         return "redirect:/routes";
     }
 
-    @GetMapping("/{name}")
-    public String getRoute(@RequestParam(value = "name") String name, Model model) {
+    @GetMapping("/name")
+    public Route getRoute(@RequestParam String name, Model model) {
         if(name == null) {
            //TODO: Return error message if name is not present
         }
+        
         Route route = repository.findByName(name);
         if(route == null) {
             //TODO: Return "Route not found"
         }
         model.addAttribute(route);
-        return "individualRoute";
+        return route;
     }
 }

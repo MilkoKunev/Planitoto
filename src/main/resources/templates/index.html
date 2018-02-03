@@ -43,15 +43,11 @@
             <li><a th:href="@{/routes}">Маршрути</a></li>
             <li><a th:href="@{/hikes}">Походи</a></li>
             <li><a th:href="@{/cabins}">Хижи</a></li>
-              <li class="authenticated"><button onClick="logout()" class="btn btn-primary">Излизане</button></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-<div class="container unauthenticated" >
-    <a th:href="@{/login}">Click here to login"</a>
-</div>
 <div class="container-fluid authenticated">
     Logged in as:<span id="user"></span>
       <div class="row">
@@ -79,26 +75,6 @@
 </div>
 </div>
 </div>
-<script type="text/javascript">
-
-    $.get("/user", function(data) {
-        $("#user").html(data.userAuthentication.details.nase);
-        $(".unauthenticated").hide();
-        $(".authenticated").show();
-    }).fail(function() {
-        $(".unauthenticated").show();
-        $(".authenticated").hide();
-    });
-
-    var logout = function() {
-        $.post("/logout", function() {
-            $("#user").html('');
-            $(".unauthenticated").show();
-            $(".authenticated").hide();
-        })
-        return true;
-    }
-</script>
 </body>
   <footer class="footer">
       <div class="container">
