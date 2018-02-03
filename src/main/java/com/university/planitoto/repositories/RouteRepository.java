@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RouteRepository extends MongoRepository<Route, String> {
 
-   List<Route> findByName(String name);
+   Route findByName(String name);
 }

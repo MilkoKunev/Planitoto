@@ -37,10 +37,24 @@ public class RouteController {
     }
 
     @PostMapping("/save")
-    public String saveRoute(@ModelAttribute Route route) {
+    public String saveRoute(@ModelAttribute Route route, Model model) {
         if(route != null) {
             this.repository.save(route);
         }
+        model.addAttribute("message", "Route created successfully");
         return "redirect:/routes";
+    }
+
+    @GetMapping("/{name}")
+    public String getRoute(@RequestParam(value = "name") String name, Model model) {
+        if(name == null) {
+           //TODO: Return error message if name is not present
+        }
+        Route route = repository.findByName(name);
+        if(route == null) {
+            //TODO: Return "Route not found"
+        }
+        model.addAttribute(route);
+        return "individualRoute";
     }
 }

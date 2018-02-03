@@ -29,3 +29,11 @@ div.list-item-image img {
   height: 150px;
   width: auto;
 }
+
+.unauthenticated {
+    display: block;
+}
+
+.authenticated {
+    display: none;
+}
