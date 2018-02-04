@@ -18,7 +18,7 @@ public class Route {
     private String name;
     private String region;
     private List<Map<String, String>> comments;
-
+    private String image;
     public Route(){}
 
     public Route(String description, String name) {
@@ -64,6 +64,14 @@ public class Route {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

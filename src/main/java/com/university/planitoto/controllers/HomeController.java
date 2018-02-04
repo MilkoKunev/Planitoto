@@ -1,9 +1,13 @@
 package com.university.planitoto.controllers;
 
+import com.university.planitoto.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.PagedList;
-import org.springframework.social.facebook.api.Post;
 import org.springframework.social.facebook.api.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,12 @@ public class HomeController {
     private Facebook facebook;
     private ConnectionRepository connectionRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private MongoOperations mongoOperations;
+
     public HomeController(Facebook facebook, ConnectionRepository connectionRepository) {
         this.facebook = facebook;
         this.connectionRepository = connectionRepository;
@@ -29,20 +39,29 @@ public class HomeController {
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
             return "redirect:/connect/facebook";
         }
-        populateUserDetailsFromFacebook(new UserBean());
-        model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
-        PagedList<Post> feed = facebook.feedOperations().getFeed();
-        model.addAttribute("feed", feed);
+        populateUserDetailsFromFacebook();
         return "index";
     }
     
-	 protected void populateUserDetailsFromFacebook(UserBean userForm) {
+	 protected void populateUserDetailsFromFacebook() {
+        //Get facebook profile
 		 User user = facebook.userOperations().getUserProfile();
-		 userForm.setEmail(user.getEmail());
-		 userForm.setFirstName(user.getFirstName());
-		 userForm.setLastName(user.getLastName());
-		 userForm.setImage(user.getCover().getSource());
-		 userForm.setProvider("facebook");
+		 //Check if user is in Mongo
+         //Update if userBean is returned from mongoDB, in case of new data
+		 UserBean userBean = userRepository.findByFacebookId(user.getId());
+         if(userBean != null) {
+             mongoOperations.updateFirst(new Query().addCriteria(Criteria.where("facebookId").is(user.getId())),
+                     new Update().set("firstName", user.getFirstName())
+                                 .set("lastName", user.getLastName())
+                                 .set("facebookId", user.getId()), UserBean.class);
+         }
+         else{
+             userBean = new UserBean();
+             userBean.setFirstName(user.getFirstName());
+             userBean.setLastName(user.getLastName());
+             userBean.setFacebookId(user.getId());
+             userBean.setProvider("facebook");
+             userRepository.save(userBean);
+         }
 	 }
-
 }

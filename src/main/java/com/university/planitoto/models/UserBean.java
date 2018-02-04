@@ -1,5 +1,7 @@
 package com.university.planitoto.models;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import java.io.Serializable;
  
 public class UserBean implements Serializable{
@@ -7,13 +9,10 @@ public class UserBean implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	 private String firstName;
 	 private String lastName;
-	 private String email;
-	 private String title;
-	 private String country;
-	 private String password;
-	 private String passwordConfirm; 
 	 private String provider;
 	 private String image;
+	 @Indexed(unique=true)
+	 private String facebookId;
 	 
 	public String getFirstName() {
 		return firstName;
@@ -26,36 +25,6 @@ public class UserBean implements Serializable{
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
 	}
 	public String getProvider() {
 		return provider;
@@ -72,8 +41,12 @@ public class UserBean implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
- 
-	 
- 
 
+	public String getFacebookId() {
+		return facebookId;
+	}
+
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
+	}
 }

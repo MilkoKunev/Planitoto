@@ -9,8 +9,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 @Configuration
-public class SessionIdentifier extends SocialConfigurerAdapter
-{
+public class SessionIdentifier extends SocialConfigurerAdapter {
  
     @Override
     public UserIdSource getUserIdSource() {

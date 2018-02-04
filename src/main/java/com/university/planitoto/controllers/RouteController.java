@@ -47,8 +47,8 @@ public class RouteController {
         return "redirect:/routes";
     }
 
-    @GetMapping("/{region}")
-    public String getRoute(@RequestParam(required = false, value = "region") String name, Model model) {
+    @GetMapping("/{name}")
+    public String getRoute(@PathVariable(value="name") String name, Model model) {
         if(name == null) {
            //TODO: Return error message if name is not present
         }
@@ -57,6 +57,6 @@ public class RouteController {
             //TODO: Return "Route not found"
         }
         model.addAttribute(route);
-        return "individualRoute";
+        return "routes/individualRoute";
     }
 }
