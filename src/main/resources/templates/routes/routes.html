@@ -44,15 +44,29 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>         
+    </nav>
 <div class="container">
-    <div>
-        <p th:if="${message != null}" th:text="${message}"></p>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 less-padding">
+                    <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Търсете по име" title="Type in a name" />
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 less-padding">
+                    <button type="button" class="btn btn-default">Търси</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+        <div id="createRoute" class="col-lg-4">
+            <button class="btn btn-default"><a style="text-decoration : none; color : #000000;" th:href="@{/routes/create}">Create route</a></button>
+        </div>
     </div>
-    <div id="createRoute">
-        <a th:href="@{/routes/create}">Create route</a>
-    </div>
-    <div th:each="route: ${routes}">
+    <div class="row">
+        <div>
+            <p th:if="${message != null}" th:text="${message}"></p>
+        </div>
+     <div th:each="route: ${routes}">
           <div class="panel panel-default parentRoute" th:id="${route.name}" th:attr="attr-region=${route.region}">
             <div class="panel-body">
               <div class="row">
@@ -69,9 +83,23 @@
               </div>
             </div>
           </div>
-
+        </div>
     </div>
 </div>
+<script>
+    function myFunction() {
+        var input, filter, id, h3;
+        input = document.getElementById("myInput");
+        filter = input.value;
+        $(".panel-default").hide();
+        $(".panel-default").each(function(index,item){
+            if (~item.id.indexOf(filter)) {
+                $(item).show();
+            }
+        });
+    }
+</script>
+
 </body>
   <footer class="footer">
       <div class="container">

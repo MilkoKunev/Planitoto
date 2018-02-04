@@ -40,7 +40,6 @@
           <ul class="nav navbar-nav">
             <li><a th:href="@{~/}">Начало<span class="sr-only">(current)</span></a></li>
             <li><a th:href="@{/routes}">Маршрути</a></li>
-            <li><a th:href="@{/hikes}">Походи</a></li>
             <li><a th:href="@{/cabins}">Хижи</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -53,13 +52,13 @@
           <div class="panel panel-default">
             <div class="panel-heading">Създай маршрут</div>
             <div class="panel-body">
-<form action="#" th:action="@{/routes/save}" th:object="${route}" method="post">
-    <p>Name:<input type="text" th:field="*{name}" /></p>
-    <p>Region:<input type="text" th:field="*{region}" /></p>
-    <p>Description:
-        <textarea th:field="*{description}" placeholder="Enter description for your route"></textarea>
-    </p>
-
+<form class="form-group" th:action="@{/routes/save}" th:object="${route}" method="post">
+    <label for="routeName">Name</label> <br/>
+    <input class="form-control" id="routeName" type="text" th:field="*{name}" /><br/>
+    <label for="regionName">Region</label><br/>
+    <input class="form-control" id="regionName" type="text" th:field="*{region}" /><br/>
+    <label for="description">Description</label><br/>
+    <textarea class="form-control" style="resize:none;" rows="5" id="description" th:field="*{description}" placeholder="Enter description for your route"></textarea><br/>
     <p><input type="submit" value="Submit" /> </p>   
               </form>
             </div>
