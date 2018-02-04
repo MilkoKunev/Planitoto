@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+    <link href="../../static/css/main.css"
+          th:href="@{../css/main.css}"
+          rel="stylesheet" media="screen" />
+    <link href="../../static/css/footer.css"
+          th:href="@{../css/footer.css}"
+          rel="stylesheet" media="screen" />
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}">
+    </script>
+    <title>Planitoto</title>
+
+</head>
+<body>
+<div class="main-logo col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+    <a th:href="@{~/}">
+        <img class="image-responsive" src="../images/logo.png" th:src="@{../images/logo.png}"/>
+    </a>
+</div>
+<nav class="navbar navbar-default main-nav col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{~/}">Начало<span class="sr-only">(current)</span></a></li>
+                <li><a th:href="@{/routes}">Маршрути</a></li>
+                <li><a th:href="@{/cabins}">Хижи</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+          <h2 th:text="${cabin.name}"></h2>
+                <img class="img-responsive" th:if="${cabin.image != null}" th:src="${cabin.image}"/>
+                <img class="img-responsive" th:if="${cabin.image == null}" th:src="@{../images/routeDefault.png}" />
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <p th:text="${cabin.description}"></p>
+                </div>
+        </div>
+       </div>
+     </div>
+
+</body>
+</html>

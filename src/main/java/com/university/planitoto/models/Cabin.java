@@ -12,6 +12,7 @@ public class Cabin {
 	private String name;
 	private String region;
 	private String description;
+	private String image;
 	
 	public Cabin() {}
 
@@ -47,7 +48,17 @@ public class Cabin {
 		this.description = descrtiption;
 	}
 	
-    @Override
+	
+	
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@Override
     public String toString() {
         return "Cabin{" +
                 "name='" + name + '\'' +   

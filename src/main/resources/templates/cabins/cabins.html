@@ -66,7 +66,7 @@
         <a th:href="@{/cabins/create}">Create cabin</a>
     </div>
     <div th:each="cabin: ${cabins}">
-          <div class="panel panel-default" id="Кобилска планина и в. Бели Камък" attr-region="Пирин">
+          <div class="panel panel-default" th:id="${cabin.name}" th:attr="attr-region=${cabin.region}">
             <div class="panel-body">
               <div class="row">
                 <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-xs-3 list-item-image">
@@ -75,8 +75,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-xs-9 list-item-desc">
                   <h1 th:text="${cabin.name}">
                   </h1>
-                      <a href="hiji_detail.html" role="button" class="btn btn-default pull-right">Разгледай
-                      </a>                 
+                    <a th:href="@{/cabins/{cabinName}(cabinName=${cabin.name})}" role="button" class="btn btn-default pull-right">Разгледай</a>               
                             <h3 th:text="${cabin.region}"></h3>
                             <p th:text="${cabin.description}"></p>
                 </div>
