@@ -52,16 +52,16 @@
           <div class="panel panel-default">
             <div class="panel-heading">Създай поход</div>
               <div class="panel-body">
-                <form th:action="@{/routes/{routeName}/hike(routeName=${routeName})}" th:object="${hike}" method="post">
+                <form class="form-group" th:action="@{/routes/{routeName}/hike(routeName=${routeName})}" th:object="${hike}" method="post">
                     <label for="hikeName">Name</label><br/>
-                    <input id="hikeName" type="text" th:field="*{name}"/><br/>
+                    <input class="form-control" id="hikeName" type="text" th:field="*{name}"/><br/>
                     <label for="hikeStartDate">StartDate</label><br/>
-                    <input id="hikeStartDate" type="date" th:field="*{startDate}" /><br/>
+                    <input class="form-control" id="hikeStartDate" type="date" th:field="*{startDate}" /><br/>
                     <label for="hikeEndDate">EndDate</label><br/>
-                    <input id="hikeEndDate" type="date" th:field="*{endDate}" /><br/>
+                    <input class="form-control" id="hikeEndDate" type="date" th:field="*{endDate}" /><br/>
                     <label for="hikeCabin">Cabin</label><br/>
-                    <input id="hikeCabin" type="text" th:field="*{cabin}" /><br/>
-                    <p><input type="submit" value="Submit" /> </p>
+                    <input class="form-control" id="hikeCabin" type="text" th:field="*{cabin}" /><br/>
+                    <p><input type="submit" value="Submit" /> </p><br/>
               </form>
             </div>
           </div>

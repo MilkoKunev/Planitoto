@@ -52,10 +52,13 @@
           <div class="panel panel-default">
             <div class="panel-heading">Създай хижа</div>
             <div class="panel-body">
-				<form action="#" th:action="@{/cabins/save}" th:object="${cabin}" method="post">
-				    <p>Name:<input type="text" th:field="*{name}" /></p>
-				    <p>Region:<input type="text" th:field="*{region}" /></p>
-				    <p>Description:<input type="text" th:field="*{description}" /></p>
+				<form class="form-group" action="#" th:action="@{/cabins/save}" th:object="${cabin}" method="post">
+				    <label for="cabinName">Name</label><br/>
+                    <input class="form-control" id="cabinName" type="text" th:field="*{name}" /><br/>
+				    <label for="cabinRegion">Region</label><br/>
+                    <input class="form-control" id="cabinRegion" type="text" th:field="*{region}" /><br/>
+                    <label for="cabinDescription">Description</label><br/>
+                    <input class="form-control" id="cabinDescription" type="text" th:field="*{description}" /><br/>
 				    <p><input type="submit" value="Submit" /> </p>     
 				</form>
             </div>
