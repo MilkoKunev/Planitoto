@@ -47,17 +47,16 @@ public class RouteController {
         return "redirect:/routes";
     }
 
-    @GetMapping("/name")
-    public Route getRoute(@RequestParam String name, Model model) {
+    @GetMapping("/{region}")
+    public String getRoute(@RequestParam(required = false, value = "region") String name, Model model) {
         if(name == null) {
            //TODO: Return error message if name is not present
         }
-        
         Route route = repository.findByName(name);
         if(route == null) {
             //TODO: Return "Route not found"
         }
         model.addAttribute(route);
-        return route;
+        return "individualRoute";
     }
 }
