@@ -17,21 +17,15 @@ public class Route {
     private String description;
     private String name;
     private String region;
-    private List<Map<String, String>> comments;
+    private List<String> hikes;
     private String image;
     public Route(){}
 
-    public Route(String description, String name) {
+    public Route(String description, String name, String region, List<String> hikes) {
         this.description = description;
         this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.region = region;
+        this.hikes = hikes;
     }
 
     public String getDescription() {
@@ -50,12 +44,12 @@ public class Route {
         this.name = name;
     }
 
-    public List<Map<String, String>> getComments() {
-        return comments;
+    public List<String> getHikes() {
+        return hikes;
     }
 
-    public void setComments(List<Map<String, String>> comments) {
-        this.comments = comments;
+    public void setHikes(List<String> hikes) {
+        this.hikes = hikes;
     }
 
     public String getRegion() {
@@ -80,7 +74,7 @@ public class Route {
                 "name='" + name + '\'' +
                 ", description=" + description + '\'' +
                 ", region=" + region + '\'' +
-                ", comments=" + comments + '\'' +
+                ", hikes=" + hikes + '\'' +
                 '}';
     }
 }

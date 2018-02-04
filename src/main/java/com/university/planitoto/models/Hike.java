@@ -3,22 +3,32 @@ package com.university.planitoto.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 
 @Document(collection="hikes")
 public class Hike {
-	
+
     @Id
     private String id;
 
     private String name;
     private String region;
-    private String startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
     private String route;
-    private String endDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
     private String cabin;
     private String owner;
+//    private List<UserBean> users;
     
     public Hike() {}
+
 
 	public String getId() {
 		return id;
@@ -44,14 +54,6 @@ public class Hike {
 		this.region = region;
 	}
 
-	public String getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-
 	public String getRoute() {
 		return route;
 	}
@@ -60,11 +62,19 @@ public class Hike {
 		this.route = route;
 	}
 
-	public String getEndDate() {
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -83,8 +93,16 @@ public class Hike {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-    
-    @Override
+
+//	public List<UserBean> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(List<UserBean> users) {
+//		this.users = users;
+//	}
+
+	@Override
     public String toString() {
         return "Hike{" +
                 "name='" + name + '\'' +

@@ -11,7 +11,6 @@ public class UserBean implements Serializable{
 	 private String lastName;
 	 private String provider;
 	 private String image;
-	 @Indexed(unique=true)
 	 private String facebookId;
 	 
 	public String getFirstName() {

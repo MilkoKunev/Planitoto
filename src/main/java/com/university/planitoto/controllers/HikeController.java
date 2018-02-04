@@ -45,6 +45,6 @@ public class HikeController {
 			this.hikeRepository.save(hike);
 		}
 		return "redirect:/hikes";
-	}	
+	}
 
 }

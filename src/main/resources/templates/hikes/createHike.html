@@ -11,7 +11,7 @@
           rel="stylesheet" media="screen" />
      <link href="../../../static/css/footer.css"
           th:href="@{../css/footer.css}" 
-          rel="stylesheet" media="screen" />  
+          rel="stylesheet" media="screen" />
     <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
     th:src="@{/webjars/jquery/3.2.1/jquery.min.js}">
     </script>          
@@ -52,23 +52,23 @@
         <div class="col-lg-6 col-lg-offset-3">
           <div class="panel panel-default">
             <div class="panel-heading">Създай поход</div>
-            <div class="panel-body">
-<form action="#" th:action="@{/hikes/save}" th:object="${hike}" method="post">
-    <p>Name:<input type="text" th:field="*{name}" /></p>
-    <p>Region:<input type="text" th:field="*{region}" /></p>
-    <p>StartDate:<input type="text" th:field="*{startDate}" /></p>
-    <p>EndDate:<input type="text" th:field="*{endDate}" /></p>
-    <p>Route:<input type="text" th:field="*{route}" /></p>
-    <p>Cabin:<input type="text" th:field="*{cabin}" /></p>
-    <p>Owner:<input type="text" th:field="*{owner}" /></p>   
-
-    <p><input type="submit" value="Submit" /> </p>   
+              <div class="panel-body">
+                <form th:action="@{/routes/{routeName}/hike(routeName=${routeName})}" th:object="${hike}" method="post">
+                    <label for="hikeName">Name</label><br/>
+                    <input id="hikeName" type="text" th:field="*{name}"/><br/>
+                    <label for="hikeStartDate">StartDate</label><br/>
+                    <input id="hikeStartDate" type="date" th:field="*{startDate}" /><br/>
+                    <label for="hikeEndDate">EndDate</label><br/>
+                    <input id="hikeEndDate" type="date" th:field="*{endDate}" /><br/>
+                    <label for="hikeCabin">Cabin</label><br/>
+                    <input id="hikeCabin" type="text" th:field="*{cabin}" /><br/>
+                    <p><input type="submit" value="Submit" /> </p>
               </form>
             </div>
           </div>
         </div>
-       </div>
-   	  </div>
+      </div>
+    </div>
 </body>
   <footer class="footer">
       <div class="container">

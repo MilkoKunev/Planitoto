@@ -16,7 +16,6 @@
             th:src="@{/webjars/jquery/3.2.1/jquery.min.js}">
     </script>
     <title>Planitoto</title>
-
 </head>
 <body>
 <div class="main-logo col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
@@ -39,51 +38,35 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a th:href="@{~/}">Начало<span class="sr-only">(current)</span></a></li>
-                <li><a th:href="@{/routes}">Маршрути</a></li>
+                <li><a th:href="@{~/}">Начало</a></li>
+                <li><a th:href="@{/routes}">Маршрути<span class="sr-only">(current)</span></a></li>
                 <li><a th:href="@{/cabins}">Хижи</a></li>
+                <li><a href="#">Вход с Facebook</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-10 col-lg-offset-1">
                 <div class="row">
-                    <h2 th:text="${route.name}"></h2>
-                    <img class="img-responsive" th:if="${route.image != null}" th:src="${route.image}"/>
-                    <img class="img-responsive" th:if="${route.image == null}" th:src="@{../images/routeDefault.png}" />
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 th:text="${hike.name}"></h2>
+                    </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-bottom:20px;">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 routeImage">
-                       <a th:href="@{/routes/{routeName}/hike(routeName=${route.name})}" role="button" class="btn btn-default" style="margin-top: 10px;">Организирай поход</a>
-                 </div>
-                </div>
-                <div class="row">
-                    <p th:text="${route.description}"></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                      <h3>Предстоящи походи</h3>
-                </div>
-                <div th:if="${hikes} != null" class="panel-group" id="accordion">
-                    <div th:each="hike: ${hikes}" class="panel panel-default">
-                        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1" >
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" th:text="${hike.name}"></a>
-                            </h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <p th:text="${hike.startDate}"></p>
-                                <button class="btn btn-default pull-right take-part" role="button">Участвай</button>
-                            </div>
-                        </div>
+                      <h4 th:tex
+                    </div>
+
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <p th:text="${route.description}"></p>
                     </div>
                 </div>
             </div>
-       </div>
-     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
