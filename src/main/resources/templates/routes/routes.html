@@ -42,7 +42,6 @@
             <li><a th:href="@{/routes}">Маршрути</a></li>
             <li><a th:href="@{/hikes}">Походи</a></li>
             <li><a th:href="@{/cabins}">Хижи</a></li>
-            <li><a href="#">Вход с Facebook</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -65,7 +64,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-xs-9 list-item-desc">
                   <h1 th:text="${route.name}">
                   </h1>
-                       <a th:href="@{/routes/} + ${route.name}" role="button" class="btn btn-default pull-right">Разгледай
+                       <a th:href="@{/routes/} + @{__${route.name}__}" role="button" class="btn btn-default pull-right">Разгледай
                       </a>
                             <p th:text="${route.description}"></p>
                 </div>
